@@ -57,7 +57,7 @@ function renderStats() {
   countDisplay.textContent = state.clicks;
   $("#hero-stats").textContent = `Уровень ${level()} · Урон ${damage()} · Убийств ${state.kills}`;
   $("#level-progress").textContent = `До уровня ${level() + 1}: ${5 - state.kills % 5} убийств · +5 урона`;
-  $("#hook-progress").textContent = `Заряд хука через ${25 - state.clicks % 25} кликов · +25 🪙 каждые 100`;
+  $("#hook-progress").textContent = `Заряд хука через ${25 - state.clicks % 25} кликов · +25 G каждые 100`;
   const descriptions = {
     damage: `+10 к урону · куплено ${state.damage}`,
     bounty: `+10 золота за крипа · куплено ${state.bounty}`,
@@ -66,7 +66,7 @@ function renderStats() {
   for (const key of ["damage", "bounty", "helper"]) {
     const maxed = state[key] >= MAX_UPGRADE;
     $(`#${key}-description`).textContent = descriptions[key];
-    $(`#${key}-price`).textContent = maxed ? "МАКС" : `${upgradeCost(key)} 🪙`;
+    $(`#${key}-price`).textContent = maxed ? "МАКС" : `${upgradeCost(key)} G`;
     $(`#buy-${key}`).disabled = maxed || state.gold < upgradeCost(key);
   }
   renderHookControls();
@@ -93,11 +93,11 @@ function currentQuest() {
 function renderQuest() {
   const quest = currentQuest();
   const progress = Math.min(state[quest.key], quest.target);
-  $("#quest-description").textContent = `${quest.label}: ${progress}/${quest.target} · награда ${quest.reward} 🪙`;
+  $("#quest-description").textContent = `${quest.label}: ${progress}/${quest.target} · награда ${quest.reward} G`;
   $("#quest-progress").max = quest.target;
   $("#quest-progress").value = progress;
   $("#claim-quest").disabled = progress < quest.target;
-  $("#claim-quest").textContent = `Забрать ${quest.reward} 🪙`;
+  $("#claim-quest").textContent = `Забрать ${quest.reward} G`;
 }
 
 $("#claim-quest").addEventListener("click", () => {
@@ -140,7 +140,7 @@ button.addEventListener("click", () => {
   if (state.clicks % 100 === 0) {
     playHook();
     state.gold += 25;
-    showCombatEffect("🪙 +25 за хук", true);
+    showCombatEffect("G +25 за хук", true);
   }
   save();
   renderStats();
@@ -155,12 +155,12 @@ function renderCreep() {
   queueLabel.textContent = creeps.length > 1 ? `Следующих крипов: ${creeps.length - 1}` : "";
   if (!target) return;
   creepElement.classList.toggle("boss", target.boss);
-  $("#enemy-title").textContent = target.boss ? "👑 Босс-мясник" : "Крип";
+  $("#enemy-title").textContent = target.boss ? "Босс-мясник" : "Крип";
   creepNumber.textContent = `#${target.id}`;
   healthBar.setAttribute("aria-valuemax", target.maxHp);
   healthBar.setAttribute("aria-valuenow", target.hp);
   healthFill.style.width = `${target.hp / target.maxHp * 100}%`;
-  healthLabel.textContent = `${target.hp} / ${target.maxHp} HP · ${target.reward} 🪙`;
+  healthLabel.textContent = `${target.hp} / ${target.maxHp} HP · ${target.reward} G`;
 }
 
 function spawnCreep() {
@@ -194,7 +194,7 @@ function attack(auto = false, isHook = false) {
   target.hp = Math.max(0, target.hp - hitDamage);
   restartAnimation(character, "attacking");
   restartAnimation(creepElement, "hit");
-  showCombatEffect(`${isHook ? "ХУК! " : critical ? "КРИТ! " : auto ? "👺 " : ""}−${hitDamage}`);
+  showCombatEffect(`${isHook ? "ХУК! " : critical ? "КРИТ! " : auto ? "АВТО " : ""}−${hitDamage}`);
   renderCreep();
 
   if (target.hp === 0) {
@@ -205,7 +205,7 @@ function attack(auto = false, isHook = false) {
     save();
     renderStats();
     combatStatus.textContent = `${target.boss ? "Босс повержен!" : "Крип убит!"} +${target.reward} золота${level() > oldLevel ? ` · Уровень ${level()}! +5 урона` : ""}`;
-    showCombatEffect(`🪙 +${target.reward}`, true);
+    showCombatEffect(`G +${target.reward}`, true);
     creepElement.classList.add("dying");
     setTimeout(() => {
       creeps.shift();

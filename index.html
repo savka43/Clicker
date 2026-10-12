@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fresh Meat — кликер</title>
-  <link rel="stylesheet" href="styles.css?v=flat-1" />
-  <script src="script.js?v=flat-1" defer></script>
+  <link rel="stylesheet" href="styles.css?v=workshop-1" />
+  <script src="script.js?v=workshop-1" defer></script>
 </head>
 <body>
   <main class="game-shell" id="app">
     <header class="topbar">
       <div class="brand"><h1>Fresh Meat</h1><p id="hero-stats" class="hero-stats"></p></div>
-      <div class="topbar-actions"><div class="gold-balance"><span aria-hidden="true">🪙</span><output id="gold" aria-label="Золото">0</output></div><button id="shop-toggle" class="shop-toggle" type="button" aria-controls="shop-panel" aria-expanded="false">Лавка</button></div>
+      <div class="topbar-actions"><div class="gold-balance"><svg class="gold-symbol" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8"/><path d="M12 6H8v8h4v-4h-2"/></svg><span class="gold-label">ЗОЛОТО</span><output id="gold" aria-label="Золото">0</output></div><button id="shop-toggle" class="shop-toggle" type="button" aria-controls="shop-panel" aria-expanded="false">Лавка</button></div>
     </header>
     <div class="game-layout">
       <section class="game-area" aria-label="Игровое поле">
@@ -89,11 +89,11 @@
     <section class="shop" aria-labelledby="shop-title">
       <button id="shop-close" class="shop-close" type="button" aria-label="Закрыть магазин">✕</button>
       <h2 id="shop-title">Лавка мясника</h2>
-      <p class="shop-hint">Убивай крипов → покупай улучшения → побеждай боссов</p>
+      <p class="shop-hint">Снаряжение и наёмники за золото.</p>
       <div class="shop-items">
-        <button class="shop-item" id="buy-damage" type="button"><span class="item-icon" aria-hidden="true">🪓</span><span><strong>Острый тесак</strong><small id="damage-description"></small></span><span class="item-price" id="damage-price"></span></button>
-        <button class="shop-item" id="buy-bounty" type="button"><span class="item-icon" aria-hidden="true">💰</span><span><strong>Золотая жила</strong><small id="bounty-description"></small></span><span class="item-price" id="bounty-price"></span></button>
-        <button class="shop-item" id="buy-helper" type="button"><span class="item-icon" aria-hidden="true">👺</span><span><strong>Маленький мясник</strong><small id="helper-description"></small></span><span class="item-price" id="helper-price"></span></button>
+        <button class="shop-item" id="buy-damage" type="button"><span class="item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 21L17 3M13 6L8 4L3 12L9 15M15 7L20 9L22 5L17 3"/></svg></span><span><strong>Острый тесак</strong><small id="damage-description"></small></span><span class="item-price" id="damage-price"></span></button>
+        <button class="shop-item" id="buy-bounty" type="button"><span class="item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="14" r="6"/><path d="M9 11v6M7 12h4M13 3c4 0 7 2 7 4s-3 4-7 4M20 7v7c0 2-2 3-5 4"/></svg></span><span><strong>Золотая жила</strong><small id="bounty-description"></small></span><span class="item-price" id="bounty-price"></span></button>
+        <button class="shop-item" id="buy-helper" type="button"><span class="item-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 16V9a7 7 0 0114 0v7l-7 5ZM5 7L2 4v6l3 2M19 7l3-3v6l-3 2M8 11h2M14 11h2M9 16h6"/></svg></span><span><strong>Маленький мясник</strong><small id="helper-description"></small></span><span class="item-price" id="helper-price"></span></button>
       </div>
       <p class="shop-status" id="shop-status" role="status" aria-live="polite">Улучшения и золото сохраняются автоматически.</p>
       <section class="quest" aria-labelledby="quest-title">

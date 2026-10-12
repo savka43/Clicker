@@ -1,94 +1,94 @@
-@import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Manrope:wght@400;600;800&display=swap');
 * { box-sizing: border-box; }
 html, body { height: 100%; }
-body { margin: 0; background: #121710; color: #f1eddf; font-family: Manrope, Arial, sans-serif; }
+body { margin: 0; background: #181819; color: #e6e1da; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; }
 button { font-family: inherit; touch-action: manipulation; cursor: pointer; }
-button:focus-visible { outline: 3px solid #c7e779; outline-offset: 3px; }
+button:focus-visible { outline: 2px solid #ba8c63; outline-offset: 3px; }
 button:disabled { opacity: .5; cursor: default; }
 [hidden] { display: none !important; }
 .game-shell { height: 100vh; height: 100dvh; max-width: 1400px; margin: 0 auto; padding: clamp(8px, 2vmin, 22px); display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 16px; }
 .topbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-h1 { margin: 0 0 5px; font: clamp(18px, 3vw, 27px) 'Russo One', Impact, sans-serif; }
-.hero-stats { margin: 0; color: #a9b99a; font-size: 12px; }
+h1 { margin: 0 0 5px; font: bold clamp(22px, 3vw, 32px) Georgia, 'Times New Roman', serif; letter-spacing: -.04em; }
+.hero-stats { margin: 0; color: #a29b94; font-size: 12px; }
 .topbar-actions { display: flex; align-items: center; gap: 12px; }
-.gold-balance { display: flex; align-items: center; gap: 8px; padding: 10px 16px; border: 1px solid #776338; border-radius: 12px; background: #322d1f; color: #f3d37a; font-weight: 800; font-variant-numeric: tabular-nums; }
-.shop-toggle { display: none; border: 1px solid #687c47; border-radius: 10px; padding: 10px; background: #29341f; color: #e5f4a6; }
+.gold-balance { display: flex; align-items: center; gap: 8px; padding: 10px 0; color: #c9a473; font-weight: 800; font-variant-numeric: tabular-nums; }
+.shop-toggle { display: none; border: 1px solid #514940; border-radius: 3px; padding: 10px; background: #29282a; color: #e6e1da; }
 .game-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 18px; min-height: 0; }
 .game-area { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 10px; min-height: 0; }
 .battle-board { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; min-height: 0; }
-.fighter-card { min-width: 0; min-height: 0; padding: clamp(10px, 2vw, 24px); border: 1px solid #46503a; border-radius: 20px; background: #1b2319; text-align: center; }
+.fighter-card { min-width: 0; min-height: 0; padding: clamp(10px, 2vw, 24px); border: 1px solid #3a3736; border-radius: 3px; background: #212123; text-align: center; }
 .hero-card { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 8px; }
-.fighter-title { margin: 0; font-size: 11px; color: #aebd96; font-weight: 800; letter-spacing: .18em; }
+.fighter-title { margin: 0; text-align: left; font-size: 11px; color: #a29b94; font-weight: 800; letter-spacing: .18em; }
 .fighter-stage { display: flex; align-items: center; justify-content: center; min-height: 0; }
 .character { position: relative; height: min(100%, 260px); aspect-ratio: 240 / 220; max-width: 100%; user-select: none; -webkit-tap-highlight-color: transparent; }
-.butcher { display: block; width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 8px 10px #0004); }
+.butcher { display: block; width: 100%; height: 100%; overflow: visible;  }
 .hero-controls { min-width: 0; }
-.count { display: block; margin: 0 0 10px; color: #e5f4a6; font: clamp(24px, 5vh, 48px) 'Russo One', Impact, sans-serif; font-variant-numeric: tabular-nums; }
-.increment { display: block; width: 100%; margin: 0; padding: 14px 10px; border: 0; border-radius: 12px; background: #c7e779; color: #202917; font: bold 16px Arial, sans-serif; }
-.increment:hover:not(:disabled) { background: #dcf7a0; }
+.count { display: block; margin: 0 0 10px; color: #e6e1da; font: 500 clamp(24px, 5vh, 48px) 'SFMono-Regular', Consolas, monospace; letter-spacing: -.06em; font-variant-numeric: tabular-nums; }
+.increment { display: block; width: 100%; margin: 0; padding: 14px 10px; border: 0; border-radius: 3px; background: #393638; color: #eee8e0; font: 600 14px -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; }
+.increment:hover:not(:disabled) { background: #494446; }
 .increment:active:not(:disabled) { transform: translateY(2px); }
-.hook-progress { margin: 10px 0 0; color: #a9b09d; font-size: 11px; line-height: 1.5; }
+.hook-progress { margin: 10px 0 0; color: #a29b94; font-size: 11px; line-height: 1.5; }
 .arena { display: grid; grid-template-rows: auto minmax(0, 1fr) auto auto auto auto; gap: 8px; }
-.spawn-timer { margin: 0; color: #a9b09d; font-size: 12px; line-height: 1.5; }
+.spawn-timer { margin: 0; color: #a29b94; font-size: 12px; line-height: 1.5; }
 .enemy-slot { position: relative; min-height: 0; display: flex; align-items: center; justify-content: center; }
-.empty-arena { color: #a9b09d; font-size: 13px; }
-.creep { position: relative; width: min(180px, 100%); height: min(100%, 250px); min-height: 0; display: grid; grid-template-rows: auto minmax(0, 1fr) 7px auto; gap: 6px; }
-.enemy-name { margin: 0; font-size: 13px; color: #dbc3b6; }
+.empty-arena { color: #a29b94; font-size: 13px; }
+.creep { position: relative; width: min(180px, 100%); height: min(100%, 250px); min-height: 0; display: grid; grid-template-rows: auto minmax(0, 1fr) 4px auto; gap: 6px; }
+.enemy-name { margin: 0; font-size: 13px; color: #c0b6ac; }
 .creep-image { display: block; width: 100%; height: 100%; min-height: 0; }
-.health-track { background: #402c2a; border-radius: 8px; overflow: hidden; }
-#health-fill { width: 100%; height: 100%; background: #e46c59; transition: width .15s; }
-.health-label { margin: 0; font-size: 11px; color: #dbc3b6; }
+.health-track { background: #373032; border-radius: 2px; overflow: hidden; }
+#health-fill { width: 100%; height: 100%; background: #aa5d50; transition: width .15s; }
+.health-label { margin: 0; font-size: 11px; color: #c0b6ac; }
 .battle-actions { display: grid; gap: 8px; }
-.attack-button { background: #e69a74; }
-.attack-button:hover:not(:disabled) { background: #ffc29d; }
-.hook-button { background: #a3bce9; }
-.hook-button:hover:not(:disabled) { background: #c5d8ff; }
-.increment:disabled { background: #3c4237; color: #a9b09d; }
-.combat-status { min-height: 32px; margin: 0; font-size: 12px; line-height: 1.4; color: #c3cbb4; }
+.attack-button { background: #965246; color: #f6eee7; }
+.attack-button:hover:not(:disabled) { background: #b06554; }
+.hook-button { background: transparent; color: #c9a473; box-shadow: inset 0 0 0 1px #655348; }
+.hook-button:hover:not(:disabled) { background: #4b4546; }
+.increment:disabled { background: #2d2c2e; color: #a29b94; }
+.combat-status { min-height: 32px; margin: 0; font-size: 12px; line-height: 1.4; color: #c0b6ac; }
 .combo-label, .queue-label { margin: 0; font-size: 11px; line-height: 1.4; }
-.combo-label { color: #e9bf83; }
-.queue-label { min-height: 15px; color: #a9b09d; }
+.combo-label { color: #bb9874; }
+.queue-label { min-height: 15px; color: #a29b94; }
 .game-footer { display: flex; justify-content: space-between; gap: 12px; }
-.level-progress, .controls-hint { margin: 0; color: #a9b09d; font-size: 10px; line-height: 1.4; }
+.level-progress, .controls-hint { margin: 0; color: #a29b94; font-size: 10px; line-height: 1.4; }
 .controls-hint { text-align: right; }
-.shop-panel { position: static; display: block; width: 100%; max-width: none; max-height: none; height: 100%; min-height: 0; margin: 0; padding: 0; border: 1px solid #46503a; border-radius: 20px; color: inherit; background: #1b2319; overflow: auto; }
+.shop-panel { position: static; display: block; width: 100%; max-width: none; max-height: none; height: 100%; min-height: 0; margin: 0; padding: 0; border: 1px solid #3a3736; border-radius: 3px; color: inherit; background: #212123; overflow: auto; }
 .shop { position: relative; padding: 22px 16px; }
-.shop h2 { margin: 0; font: 20px 'Russo One', Impact, sans-serif; }
-.shop-hint, .shop-status { font-size: 11px; color: #a9b09d; line-height: 1.6; }
-.shop-items { display: grid; gap: 10px; margin: 18px 0; }
-.shop-item { display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 8px; padding: 14px 10px; width: 100%; border: 1px solid #687c47; border-radius: 12px; background: #29341f; color: #f1eddf; text-align: left; }
+.shop h2 { margin: 0; font: bold 22px Georgia, 'Times New Roman', serif; letter-spacing: -.03em; }
+.shop-hint, .shop-status { font-size: 11px; color: #a29b94; line-height: 1.6; }
+.shop-items { display: grid; gap: 0; margin: 18px 0; }
+.shop-item { display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 8px; padding: 18px 4px; width: 100%; border: 0; border-bottom: 1px solid #3a3736; border-radius: 0; background: transparent; color: #e6e1da; text-align: left; }
 .shop-item strong { display: block; font-size: 12px; }
-.shop-item small { display: block; color: #b1bba2; font-size: 10px; margin-top: 5px; line-height: 1.4; }
-.item-icon { font-size: 23px; }
-.item-price { color: #f3d37a; font-size: 11px; white-space: nowrap; }
-.shop-item:hover:not(:disabled) { background: #354728; border-color: #c7e779; }
-.shop-item:disabled { border-color: #46503a; }
+.shop-item small { display: block; color: #a29b94; font-size: 10px; margin-top: 5px; line-height: 1.4; }
+.item-icon { color: #a98a6c; }
+.item-icon svg { display: block; width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.item-price { color: #c9a473; font-family: 'SFMono-Regular', Consolas, monospace; font-size: 11px; white-space: nowrap; }
+.shop-item:hover:not(:disabled) { background: #343033; border-color: #ba8c63; }
+.shop-item:disabled { border-color: #3a3736; }
 .shop-status { min-height: 36px; margin-bottom: 0; }
-.shop-close { display: none; position: absolute; top: 12px; right: 12px; width: 32px; height: 32px; border: 0; border-radius: 8px; background: #354728; color: #f1eddf; }
-.quest { margin-top: 20px; border-top: 1px solid #46503a; padding-top: 18px; }
-.quest h3 { margin: 0; font-size: 14px; color: #e9bf83; }
-.quest p { color: #a9b09d; font-size: 12px; line-height: 1.5; }
-.quest progress { display: block; width: 100%; height: 8px; accent-color: #c7e779; margin-bottom: 14px; }
-.claim-button { font-size: 13px; padding: 12px 8px; }
-.hook-flight { position: absolute; top: 52%; left: 79%; width: 25%; height: 41%; color: #dce1d0; opacity: 0; pointer-events: none; }
+.shop-close { display: none; position: absolute; top: 12px; right: 12px; width: 32px; height: 32px; border: 0; border-radius: 2px; background: #343033; color: #e6e1da; }
+.quest { margin-top: 20px; border-top: 1px solid #3a3736; padding-top: 18px; }
+.quest h3 { margin: 0; font-size: 14px; color: #bb9874; }
+.quest p { color: #a29b94; font-size: 12px; line-height: 1.5; }
+.quest progress { display: block; width: 100%; height: 4px; accent-color: #ba8c63; margin-bottom: 14px; }
+.claim-button { background: #504035; color: #e6d5c3; font-size: 13px; padding: 12px 8px; }
+.hook-flight { position: absolute; top: 52%; left: 79%; width: 25%; height: 41%; color: #c2bdba; opacity: 0; pointer-events: none; }
 .hook-flight svg { width: 100%; height: 100%; position: relative; }
-.chain { position: absolute; right: 50%; top: 8%; width: 250%; height: 6px; background: #aeb6a3; transform-origin: right center; }
-.battle-cry { position: absolute; z-index: 2; top: 8%; left: -10%; right: -10%; margin: 0; opacity: 0; font: clamp(18px, 3vw, 32px) 'Russo One', Impact, sans-serif; color: #e5f4a6; text-shadow: 0 3px #343f24, 0 0 24px #b5df6580; pointer-events: none; }
+.chain { position: absolute; right: 50%; top: 8%; width: 250%; height: 6px; background: #aaa4a0; transform-origin: right center; }
+.battle-cry { position: absolute; z-index: 2; top: 8%; left: -10%; right: -10%; margin: 0; opacity: 0; font: bold italic clamp(18px, 3vw, 32px) Georgia, 'Times New Roman', serif; color: #e6e1da;  pointer-events: none; }
 .hooking .hook-flight { animation: throw-hook 1.3s ease-in-out; }
 .hooking .butcher { animation: recoil 1.3s ease-in-out; }
 .hooking .battle-cry { animation: shout 1.8s ease-out; }
-.slash { position: absolute; left: 15%; top: 40%; width: 70%; height: 7px; background: #fff0cd; box-shadow: 0 0 16px #ffc789; border-radius: 100%; opacity: 0; pointer-events: none; }
+.slash { position: absolute; left: 15%; top: 40%; width: 70%; height: 7px; background: #fff0cd;  border-radius: 100%; opacity: 0; pointer-events: none; }
 .attacking { animation: melee-strike .3s ease-out; }
 .hit .creep-image { animation: take-hit .3s ease-out; }
 .hit .slash { animation: slash .3s ease-out; }
 .dying { animation: creep-death .6s ease-in forwards; }
 .spawning { animation: creep-spawn .4s ease-out; }
 .combat-effects { position: absolute; inset: 0; pointer-events: none; }
-.combat-float { position: absolute; top: 35%; left: 0; right: 0; font-weight: 800; color: #ffab92; animation: combat-float .8s ease-out forwards; }
-.combat-float.reward { color: #ffe085; font-size: 20px; }
-.boss .creep-image { filter: drop-shadow(0 0 12px #dc854b80); }
-.boss .enemy-name { color: #ffc074; font-weight: 800; }
-.boss #health-fill { background: #f4b84b; }
+.combat-float { position: absolute; top: 35%; left: 0; right: 0; font-weight: 800; color: #d38d7a; animation: combat-float .8s ease-out forwards; }
+.combat-float.reward { color: #c9a473; font-size: 20px; }
+.boss .creep-image { filter: saturate(.65); }
+.boss .enemy-name { color: #cfad87; font-weight: 800; }
+.boss #health-fill { background: #b18758; }
 @keyframes throw-hook { 0% { opacity: 0; transform: translate(0, 0) rotate(-30deg) scale(.5); } 15% { opacity: 1; } 45% { opacity: 1; transform: translate(-125%, 60%) rotate(15deg) scale(1.6); } 70% { opacity: 1; } 100% { opacity: 0; transform: translate(0, 0) rotate(-30deg) scale(.5); } }
 @keyframes recoil { 0%, 100% { transform: rotate(0); } 20% { transform: rotate(-8deg) translateY(-5px); } 45% { transform: rotate(5deg); } }
 @keyframes shout { 0% { opacity: 0; transform: scale(.6) rotate(-8deg); } 15%, 70% { opacity: 1; transform: scale(1) rotate(-5deg); } 100% { opacity: 0; transform: translateY(-22px) rotate(-5deg); } }
@@ -103,15 +103,15 @@ h1 { margin: 0 0 5px; font: clamp(18px, 3vw, 27px) 'Russo One', Impact, sans-ser
   .shop-toggle, .shop-close { display: block; }
   .shop-panel:not([open]) { display: none; }
   .shop-panel[open] { position: fixed; inset: 0; margin: auto; width: min(92vw, 380px); height: min(90dvh, 720px); max-height: 90dvh; }
-  .shop-panel::backdrop { background: #000b; backdrop-filter: blur(5px); }
+  .shop-panel::backdrop { background: #000b;  }
 }
 @media (max-width: 520px) {
   .game-shell { gap: 10px; }
   .topbar-actions { gap: 6px; }
   .gold-balance { padding: 8px; font-size: 13px; }
-  .hero-stats { font-size: 10px; }
+  .hero-stats { font-size: 11px; }
   .battle-board { gap: 8px; }
-  .fighter-card { padding: 12px 8px; border-radius: 14px; }
+  .fighter-card { padding: 12px 8px; border-radius: 3px; }
   .increment { font-size: 13px; padding: 12px 6px; }
   .spawn-timer, .combat-status { font-size: 10px; }
   .enemy-name, .empty-arena, .health-label, .combo-label, .queue-label, .hook-progress { font-size: 10px; }
@@ -135,3 +135,17 @@ h1 { margin: 0 0 5px; font: clamp(18px, 3vw, 27px) 'Russo One', Impact, sans-ser
   .hooking .battle-cry { animation: none; opacity: 1; }
   .dying { opacity: .4; }
 }
+
+.hero-stats, .health-label, .level-progress, .controls-hint { font-family: 'SFMono-Regular', Consolas, monospace; }
+.gold-symbol { display: block; width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+.gold-label { color: #a29b94; font-size: 10px; font-weight: 500; }
+.shop h2 { padding-bottom: 12px; border-bottom: 1px solid #3a3736; }
+.shop-item:disabled { opacity: .65; }
+.shop-item:disabled .item-price { color: #a29b94; }
+.battle-cry { color: #d6b397; }
+@media (max-width: 520px) { .gold-label { display: none; } }
+
+.quest progress { appearance: none; border: 0; border-radius: 0; background: #373032; }
+.quest progress::-webkit-progress-bar { background: #373032; }
+.quest progress::-webkit-progress-value { background: #ba8c63; }
+.quest progress::-moz-progress-bar { background: #ba8c63; }
