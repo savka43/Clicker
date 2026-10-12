@@ -1,40 +1,28 @@
-body {
-    font-family: Arial, sans-serif;
-    background: #eef2f8;
-}
-
-.counter {
-    width: 300px;
-    margin: 100px auto;
-    padding: 24px;
-    background: white;
-    border-radius: 16px;
-    text-align: center;
-}
-
-.count {
-    font-size: 48px;
-    color: #2563eb;
-    margin: 20px 0;
-}
-
-button {
-    padding: 12px 18px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.increment {
-    background: #2563eb;
-    color: white;
-}
-
-.decrement {
-    background: #e2e8f0;
-}
-
-.reset {
-    background: #fee2e2;
-    color: #b91c1c;
-}
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Manrope:wght@400;600;800&display=swap');
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100svh; display: grid; place-items: center; padding: 28px 18px; background: radial-gradient(ellipse at 50% 25%, #303c26 0, #121710 55%, #0b0e0b 100%); color: #f1eddf; font-family: Manrope, Arial, sans-serif; }
+.counter { width: min(100%, 410px); padding: 28px 32px; border: 1px solid #46503a; border-radius: 26px; background: linear-gradient(145deg, #242c20, #161d16); text-align: center; box-shadow: 0 25px 80px #0006; }
+.eyebrow { margin: 0; font-size: 10px; letter-spacing: .3em; font-weight: 800; color: #a7b387; }
+.character { position: relative; width: 240px; height: 220px; margin: 12px auto 0; }
+.butcher { width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 8px 10px #0004); }
+h1 { margin: 8px 0; font: 30px 'Russo One', Impact, sans-serif; }
+.subtitle, .remaining { color: #a9b09d; font-size: 12px; }
+.count { display: block; margin: 20px 0; font: 64px 'Russo One', Impact, sans-serif; font-variant-numeric: tabular-nums; }
+.increment { width: 100%; min-height: 56px; display: flex; justify-content: space-between; align-items: center; padding: 14px 22px; border: 0; border-radius: 12px; background: #c7e779; color: #202917; font: 800 16px Manrope, Arial, sans-serif; cursor: pointer; box-shadow: 0 4px 0 #738a3f; touch-action: manipulation; transition: background .15s, transform .1s; }
+.increment:hover { background: #dcf7a0; }
+.increment:active { transform: translateY(3px); box-shadow: 0 1px 0 #738a3f; }
+.increment:focus-visible { outline: 3px solid #fff1c0; outline-offset: 5px; }
+.progress-track { height: 5px; margin-top: 26px; background: #39412f; overflow: hidden; border-radius: 8px; }
+#progress-fill { height: 100%; width: 0; background: #c7e779; transition: width .12s; }
+.remaining { margin: 10px 0 0; }
+.hook-flight { position: absolute; top: 115px; left: 190px; width: 60px; height: 90px; color: #dce1d0; opacity: 0; pointer-events: none; }
+.hook-flight svg { width: 60px; height: 90px; position: relative; }
+.chain { position: absolute; right: 30px; top: 7px; width: 150px; height: 6px; background: repeating-linear-gradient(90deg, #aeb6a3 0 7px, #56604e 7px 11px); transform-origin: right center; }
+.battle-cry { position: absolute; z-index: 2; top: 16px; left: -20px; right: -20px; margin: 0; opacity: 0; font: 32px 'Russo One', Impact, sans-serif; color: #e5f4a6; text-shadow: 0 3px #343f24, 0 0 24px #b5df6580; pointer-events: none; }
+.hooking .hook-flight { animation: throw-hook 1.3s ease-in-out; }
+.hooking .butcher { animation: recoil 1.3s ease-in-out; }
+.hooking .battle-cry { animation: shout 1.8s ease-out; }
+@keyframes throw-hook { 0% { opacity: 0; transform: translate(0, 0) rotate(-30deg) scale(.5); } 15% { opacity: 1; } 45% { opacity: 1; transform: translate(-125px, 60px) rotate(15deg) scale(1.6); } 70% { opacity: 1; } 100% { opacity: 0; transform: translate(0, 0) rotate(-30deg) scale(.5); } }
+@keyframes recoil { 0%, 100% { transform: rotate(0); } 20% { transform: rotate(-8deg) translateY(-5px); } 45% { transform: rotate(5deg); } }
+@keyframes shout { 0% { opacity: 0; transform: scale(.6) rotate(-8deg); } 15%, 70% { opacity: 1; transform: scale(1) rotate(-5deg); } 100% { opacity: 0; transform: translateY(-22px) rotate(-5deg); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } .hooking .hook-flight, .hooking .butcher { animation: none; } .hooking .battle-cry { animation: none; opacity: 1; } }

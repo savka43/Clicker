@@ -1,12 +1,44 @@
 <!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-    </head>
-    <body>
-        <div id="app"></div>
-        <script src="script.js"></script>
-    </body>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fresh Meat — кликер</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="counter" id="app">
+    <p class="eyebrow">МЯСНАЯ ЛАВКА</p>
+    <div class="character" id="character">
+      <svg class="butcher" viewBox="0 0 240 220" role="img" aria-label="Зелёный мясник с крюком, похожий на Пуджа">
+        <defs><linearGradient id="skin" x2="0" y2="1"><stop stop-color="#abc277"/><stop offset="1" stop-color="#62773e"/></linearGradient></defs>
+        <ellipse cx="120" cy="207" rx="85" ry="10" fill="#000" opacity=".25"/>
+        <path d="M48 175Q25 132 48 108L75 102H165L190 114Q213 140 191 180" fill="url(#skin)" stroke="#334128" stroke-width="5"/>
+        <path d="M66 119Q48 150 59 202H181Q194 146 168 119" fill="url(#skin)" stroke="#334128" stroke-width="5"/>
+        <path d="M82 108L74 144L62 196Q122 215 181 197L165 145L157 109" fill="#b5a58b" stroke="#594d3b" stroke-width="5"/>
+        <path d="M100 158l12 8-5 16-17-6zm43 24 11-13 8 16-6 11" fill="#783c35" opacity=".7"/>
+        <path d="M78 53Q78 23 120 25Q162 26 167 60L160 98Q151 122 121 123Q87 121 80 97Z" fill="url(#skin)" stroke="#334128" stroke-width="5"/>
+        <path d="M83 53L81 32L99 41L106 22L120 35L138 23L142 41L160 35L165 55" fill="#35372c"/>
+        <path d="M89 65l23 5m19 0 23-6" stroke="#334128" stroke-width="7" stroke-linecap="round"/>
+        <circle cx="103" cy="76" r="4" fill="#ffe093"/><circle cx="142" cy="76" r="4" fill="#ffe093"/>
+        <path d="M119 77l-5 13h14" fill="#728c49" stroke="#46552f" stroke-width="3"/>
+        <path d="M94 97Q123 87 150 96Q142 116 122 114Q101 115 94 97" fill="#352b26"/>
+        <path d="M100 96l3 10 8-2 1-10m20 0 2 10 8-2 2-8" fill="#efe6c9"/>
+        <path d="M84 82l12 9m-9-7-4 7m9-3-4 7" stroke="#594f3b" stroke-width="2"/>
+        <path d="M45 143l-10 40 24 8 10-39Z" fill="#777b76" stroke="#303731" stroke-width="4"/>
+        <path d="M47 129l-7 24" stroke="#614633" stroke-width="9" stroke-linecap="round"/>
+        <g class="hook-arm"><path d="M173 125Q209 115 208 142" fill="none" stroke="#829954" stroke-width="22" stroke-linecap="round"/><path d="M209 140v25q0 17-13 17q-12 0-10-11" fill="none" stroke="#d0d4c6" stroke-width="7" stroke-linecap="round"/></g>
+      </svg>
+      <div class="hook-flight" aria-hidden="true"><span class="chain"></span><svg viewBox="0 0 60 90"><path d="M30 5v47c0 34 28 32 25 9l-9 8" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="10" r="7" fill="#242a23" stroke="currentColor" stroke-width="4"/></svg></div>
+      <p class="battle-cry" id="battle-cry" role="status" aria-live="polite"></p>
+    </div>
+    <h1>Fresh Meat</h1>
+    <p class="subtitle">Каждые 100 кликов — новый хук.</p>
+    <output class="count" id="count" aria-label="Количество кликов">0</output>
+    <button class="increment" id="click-button" type="button">Нажми меня <span aria-hidden="true">↗</span></button>
+    <div class="progress-track" role="progressbar" aria-label="До следующего хука" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress"><div id="progress-fill"></div></div>
+    <p class="remaining" id="remaining">До хука: 100 кликов</p>
+  </main>
+</body>
 </html>
