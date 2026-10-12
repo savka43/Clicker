@@ -9,8 +9,7 @@
 </head>
 <body>
   <main class="counter" id="app">
-    <p class="eyebrow">МЯСНАЯ ЛАВКА</p>
-    <div class="character" id="character">
+    <div class="character" id="character" role="button" tabindex="0" aria-label="Кликнуть по Пуджу">
       <svg class="butcher" viewBox="0 0 240 220" role="img" aria-label="Зелёный мясник с крюком, похожий на Пуджа">
         <defs><linearGradient id="skin" x2="0" y2="1"><stop stop-color="#abc277"/><stop offset="1" stop-color="#62773e"/></linearGradient></defs>
         <ellipse cx="120" cy="207" rx="85" ry="10" fill="#000" opacity=".25"/>
@@ -33,12 +32,6 @@
       <div class="hook-flight" aria-hidden="true"><span class="chain"></span><svg viewBox="0 0 60 90"><path d="M30 5v47c0 34 28 32 25 9l-9 8" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="10" r="7" fill="#242a23" stroke="currentColor" stroke-width="4"/></svg></div>
       <p class="battle-cry" id="battle-cry" role="status" aria-live="polite"></p>
     </div>
-    <h1>Fresh Meat</h1>
-    <p class="subtitle">Каждые 100 кликов — новый хук.</p>
-    <output class="count" id="count" aria-label="Количество кликов">0</output>
-    <button class="increment" id="click-button" type="button">Нажми меня <span aria-hidden="true">↗</span></button>
-    <div class="progress-track" role="progressbar" aria-label="До следующего хука" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress"><div id="progress-fill"></div></div>
-    <p class="remaining" id="remaining">До хука: 100 кликов</p>
   </main>
 </body>
 </html>
