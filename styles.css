@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Manrope:wght@400;600;800&display=swap');
 * { box-sizing: border-box; }
 html, body { height: 100%; }
-body { margin: 0; background: radial-gradient(ellipse at 40% 20%, #303c26, #121710 60%, #0b0e0b); color: #f1eddf; font-family: Manrope, Arial, sans-serif; }
+body { margin: 0; background: #121710; color: #f1eddf; font-family: Manrope, Arial, sans-serif; }
 button { font-family: inherit; touch-action: manipulation; cursor: pointer; }
 button:focus-visible { outline: 3px solid #c7e779; outline-offset: 3px; }
 button:disabled { opacity: .5; cursor: default; }
@@ -16,7 +16,7 @@ h1 { margin: 0 0 5px; font: clamp(18px, 3vw, 27px) 'Russo One', Impact, sans-ser
 .game-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 18px; min-height: 0; }
 .game-area { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 10px; min-height: 0; }
 .battle-board { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; min-height: 0; }
-.fighter-card { min-width: 0; min-height: 0; padding: clamp(10px, 2vw, 24px); border: 1px solid #46503a; border-radius: 20px; background: linear-gradient(145deg, #273120b3, #161d16e6); text-align: center; }
+.fighter-card { min-width: 0; min-height: 0; padding: clamp(10px, 2vw, 24px); border: 1px solid #46503a; border-radius: 20px; background: #1b2319; text-align: center; }
 .hero-card { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 8px; }
 .fighter-title { margin: 0; font-size: 11px; color: #aebd96; font-weight: 800; letter-spacing: .18em; }
 .fighter-stage { display: flex; align-items: center; justify-content: center; min-height: 0; }
@@ -72,7 +72,7 @@ h1 { margin: 0 0 5px; font: clamp(18px, 3vw, 27px) 'Russo One', Impact, sans-ser
 .claim-button { font-size: 13px; padding: 12px 8px; }
 .hook-flight { position: absolute; top: 52%; left: 79%; width: 25%; height: 41%; color: #dce1d0; opacity: 0; pointer-events: none; }
 .hook-flight svg { width: 100%; height: 100%; position: relative; }
-.chain { position: absolute; right: 50%; top: 8%; width: 250%; height: 6px; background: repeating-linear-gradient(90deg, #aeb6a3 0 7px, #56604e 7px 11px); transform-origin: right center; }
+.chain { position: absolute; right: 50%; top: 8%; width: 250%; height: 6px; background: #aeb6a3; transform-origin: right center; }
 .battle-cry { position: absolute; z-index: 2; top: 8%; left: -10%; right: -10%; margin: 0; opacity: 0; font: clamp(18px, 3vw, 32px) 'Russo One', Impact, sans-serif; color: #e5f4a6; text-shadow: 0 3px #343f24, 0 0 24px #b5df6580; pointer-events: none; }
 .hooking .hook-flight { animation: throw-hook 1.3s ease-in-out; }
 .hooking .butcher { animation: recoil 1.3s ease-in-out; }
