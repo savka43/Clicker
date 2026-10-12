@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fresh Meat — кликер</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=button-1" />
+  <script src="script.js?v=button-1" defer></script>
 </head>
 <body>
   <main class="counter" id="app">
-    <div class="character" id="character" role="button" tabindex="0" aria-label="Кликнуть по Пуджу">
+    <div class="character" id="character">
       <svg class="butcher" viewBox="0 0 240 220" role="img" aria-label="Зелёный мясник с крюком, похожий на Пуджа">
         <defs><linearGradient id="skin" x2="0" y2="1"><stop stop-color="#abc277"/><stop offset="1" stop-color="#62773e"/></linearGradient></defs>
         <ellipse cx="120" cy="207" rx="85" ry="10" fill="#000" opacity=".25"/>
@@ -33,6 +33,7 @@
       <p class="battle-cry" id="battle-cry" role="status" aria-live="polite"></p>
     </div>
     <output id="count" class="count" aria-label="Количество кликов">0</output>
+    <button id="click-button" class="increment" type="button">Нажми меня</button>
   </main>
 </body>
 </html>

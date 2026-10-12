@@ -1,29 +1,25 @@
-const countDisplay = document.querySelector('#count');
-const character = document.querySelector('#character');
-const battleCry = document.querySelector('#battle-cry');
+const countDisplay = document.querySelector("#count");
+const button = document.querySelector("#click-button");
+const character = document.querySelector("#character");
+const battleCry = document.querySelector("#battle-cry");
 let count = 0;
 let hookTimeout;
 
 function clickPudge() {
+  console.log("Клик");
   count += 1;
   countDisplay.textContent = count;
   if (count % 100 === 0) {
     clearTimeout(hookTimeout);
-    character.classList.remove('hooking');
+    character.classList.remove("hooking");
     void character.offsetWidth;
-    battleCry.textContent = 'fresh meat!';
-    character.classList.add('hooking');
+    battleCry.textContent = "fresh meat!";
+    character.classList.add("hooking");
     hookTimeout = setTimeout(() => {
-      character.classList.remove('hooking');
-      battleCry.textContent = '';
+      character.classList.remove("hooking");
+      battleCry.textContent = "";
     }, 1800);
   }
 }
 
-character.addEventListener('click', clickPudge);
-character.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter' || event.key === ' ') {
-    event.preventDefault();
-    if (!event.repeat) clickPudge();
-  }
-});
+button.addEventListener("click", clickPudge);
