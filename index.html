@@ -4,11 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fresh Meat — кликер</title>
-  <link rel="stylesheet" href="styles.css?v=button-1" />
-  <script src="script.js?v=button-1" defer></script>
+  <link rel="stylesheet" href="styles.css?v=arena-2" />
+  <script src="script.js?v=arena-2" defer></script>
 </head>
 <body>
-  <main class="counter" id="app">
+  <main class="game-shell" id="app">
+    <header class="topbar">
+      <div class="brand"><h1>Fresh Meat</h1><p id="hero-stats" class="hero-stats"></p></div>
+      <div class="topbar-actions"><div class="gold-balance"><span aria-hidden="true">🪙</span><output id="gold" aria-label="Золото">0</output></div><button id="shop-toggle" class="shop-toggle" type="button" aria-controls="shop-panel" aria-expanded="false">Лавка</button></div>
+    </header>
+    <div class="game-layout">
+      <section class="game-area" aria-label="Игровое поле">
+        <div class="battle-board">
+          <section class="hero-card fighter-card" aria-label="Пудж и кликер">
+            <p class="fighter-title">ПУДЖ</p>
+            <div class="fighter-stage">
     <div class="character" id="character">
       <svg class="butcher" viewBox="0 0 240 220" role="img" aria-label="Зелёный мясник с крюком, похожий на Пуджа">
         <defs><linearGradient id="skin" x2="0" y2="1"><stop stop-color="#abc277"/><stop offset="1" stop-color="#62773e"/></linearGradient></defs>
@@ -32,8 +42,69 @@
       <div class="hook-flight" aria-hidden="true"><span class="chain"></span><svg viewBox="0 0 60 90"><path d="M30 5v47c0 34 28 32 25 9l-9 8" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="10" r="7" fill="#242a23" stroke="currentColor" stroke-width="4"/></svg></div>
       <p class="battle-cry" id="battle-cry" role="status" aria-live="polite"></p>
     </div>
+            </div>
+            <div class="hero-controls">
     <output id="count" class="count" aria-label="Количество кликов">0</output>
     <button id="click-button" class="increment" type="button">Нажми меня</button>
+    <p class="hook-progress" id="hook-progress"></p>
+            </div>
+          </section>
+    <section class="arena fighter-card" aria-label="Бой с крипами">
+      <p id="spawn-timer" class="spawn-timer">Новый крип через 10 с</p>
+      <div class="enemy-slot" id="enemy-slot">
+        <p id="empty-arena" class="empty-arena">Ожидаем крипа…</p>
+        <div id="creep" class="creep" hidden>
+          <p class="enemy-name"><span id="enemy-title">Крип</span> <span id="creep-number"></span></p>
+          <svg viewBox="0 0 160 150" class="creep-image" role="img" aria-label="Красный крип с мечом">
+            <ellipse cx="80" cy="140" rx="50" ry="7" fill="#000" opacity=".25"/>
+            <path d="M46 91L31 126L55 133L68 104M95 106L103 137L128 130L112 89" fill="#6d403c" stroke="#34262a" stroke-width="5"/>
+            <path d="M48 65Q80 45 113 66L117 109Q81 126 44 109Z" fill="#7b443b" stroke="#34262a" stroke-width="5"/>
+            <path d="M58 70L80 81L104 68L100 107L62 109Z" fill="#62676d" stroke="#30343b" stroke-width="4"/>
+            <path d="M51 32L40 13L69 21Q87 13 100 24L121 14L113 41L106 65Q81 79 57 62Z" fill="#b56e52" stroke="#49332d" stroke-width="5"/>
+            <path d="M59 37L74 43M91 43L105 36" stroke="#442b28" stroke-width="5"/>
+            <circle cx="68" cy="46" r="3" fill="#ffd178"/><circle cx="98" cy="46" r="3" fill="#ffd178"/>
+            <path d="M67 58L99 57L91 65L76 65Z" fill="#38272a"/>
+            <path d="M30 80L20 39L26 19L37 38L41 78" fill="#bfc4c6" stroke="#444b50" stroke-width="4"/>
+            <path d="M18 81L49 74M36 78L40 104" stroke="#846740" stroke-width="7" stroke-linecap="round"/>
+            <path d="M47 77L37 90M111 77L124 98" stroke="#b56e52" stroke-width="15" stroke-linecap="round"/>
+          </svg>
+          <span class="slash" aria-hidden="true"></span>
+          <div class="health-track" role="progressbar" id="creep-health" aria-label="Здоровье крипа" aria-valuemin="0" aria-valuemax="60" aria-valuenow="60"><div id="health-fill"></div></div>
+          <p class="health-label" id="health-label">60 / 60 HP</p>
+        </div>
+        <div id="combat-effects" class="combat-effects" aria-hidden="true"></div>
+      </div>
+      <div class="battle-actions">
+      <button id="attack-button" class="increment attack-button" type="button" disabled>Атаковать крипа</button>
+      <button id="hook-button" class="increment hook-button" type="button" disabled>Хук ×3 · 0/3</button>
+      </div>
+      <p class="combat-status" id="combat-status" role="status" aria-live="polite">3 удара по 20 урона · награда 25 золота</p>
+      <p class="combo-label" id="combo-label">5 быстрых ударов — критический удар ×2</p>
+      <p class="queue-label" id="queue-label"></p>
+    </section>
+        </div>
+        <footer class="game-footer"><p class="level-progress" id="level-progress"></p><p class="controls-hint">Пробел — клик · A — атака · Q — хук · M — лавка</p></footer>
+      </section>
+      <dialog id="shop-panel" class="shop-panel" open aria-labelledby="shop-title">
+    <section class="shop" aria-labelledby="shop-title">
+      <button id="shop-close" class="shop-close" type="button" aria-label="Закрыть магазин">✕</button>
+      <h2 id="shop-title">Лавка мясника</h2>
+      <p class="shop-hint">Убивай крипов → покупай улучшения → побеждай боссов</p>
+      <div class="shop-items">
+        <button class="shop-item" id="buy-damage" type="button"><span class="item-icon" aria-hidden="true">🪓</span><span><strong>Острый тесак</strong><small id="damage-description"></small></span><span class="item-price" id="damage-price"></span></button>
+        <button class="shop-item" id="buy-bounty" type="button"><span class="item-icon" aria-hidden="true">💰</span><span><strong>Золотая жила</strong><small id="bounty-description"></small></span><span class="item-price" id="bounty-price"></span></button>
+        <button class="shop-item" id="buy-helper" type="button"><span class="item-icon" aria-hidden="true">👺</span><span><strong>Маленький мясник</strong><small id="helper-description"></small></span><span class="item-price" id="helper-price"></span></button>
+      </div>
+      <p class="shop-status" id="shop-status" role="status" aria-live="polite">Улучшения и золото сохраняются автоматически.</p>
+      <section class="quest" aria-labelledby="quest-title">
+        <h3 id="quest-title">Контракт мясника</h3>
+        <p id="quest-description"></p>
+        <progress id="quest-progress" max="5" value="0" aria-label="Прогресс контракта"></progress>
+        <button id="claim-quest" class="increment claim-button" type="button" disabled>Забрать награду</button>
+      </section>
+    </section>
+      </dialog>
+    </div>
   </main>
 </body>
 </html>
