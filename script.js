@@ -1,3 +1,4 @@
+const countDisplay = document.querySelector('#count');
 const character = document.querySelector('#character');
 const battleCry = document.querySelector('#battle-cry');
 let count = 0;
@@ -5,6 +6,7 @@ let hookTimeout;
 
 function clickPudge() {
   count += 1;
+  countDisplay.textContent = count;
   if (count % 100 === 0) {
     clearTimeout(hookTimeout);
     character.classList.remove('hooking');

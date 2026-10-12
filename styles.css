@@ -17,3 +17,5 @@ body { margin: 0; min-height: 100svh; display: grid; place-items: center; paddin
 @keyframes recoil { 0%, 100% { transform: rotate(0); } 20% { transform: rotate(-8deg) translateY(-5px); } 45% { transform: rotate(5deg); } }
 @keyframes shout { 0% { opacity: 0; transform: scale(.6) rotate(-8deg); } 15%, 70% { opacity: 1; transform: scale(1) rotate(-5deg); } 100% { opacity: 0; transform: translateY(-22px) rotate(-5deg); } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } .hooking .hook-flight, .hooking .butcher { animation: none; } .hooking .battle-cry { animation: none; opacity: 1; } }
+
+.count { display: block; margin-top: 20px; color: #e5f4a6; font: 48px 'Russo One', Impact, sans-serif; font-variant-numeric: tabular-nums; }
